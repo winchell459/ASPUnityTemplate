@@ -17,4 +17,14 @@ public static class UtilityASP
 
         return max;
     }
+
+    public static T[] GetArray<T>(List<T> list)
+    {
+        T[] newList = new T[list.Count];
+        for (int i = 0; i < list.Count; i += 1)
+        {
+            newList[i] = list[i];
+        }
+        return newList;
+    }
 }

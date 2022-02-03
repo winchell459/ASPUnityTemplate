@@ -2,7 +2,7 @@
 using UnityEngine;
 using Clingo;
 
-[CustomEditor(typeof(ClingoSolver))]
+
 public class ClingoSolverEditor : Editor
 {
     string solutionOutput = "";
@@ -25,6 +25,7 @@ public class ClingoSolverEditor : Editor
             EditorGUILayout.LabelField("Thread State: ", solver.clingoThread.ThreadState.ToString());
         }
 
+        
         if (GUILayout.Button("Solve in Thread"))
         {
             solver.Solve();
@@ -43,3 +44,14 @@ public class ClingoSolverEditor : Editor
     }
 
 }
+[CustomEditor(typeof(ClingoLocal))]
+public class ClingoLocalEditor : ClingoSolverEditor
+{
+
+}
+[CustomEditor(typeof(ClingoOnline))]
+public class ClingoOnlineEditor : ClingoSolverEditor
+{
+
+}
+
