@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     
     public void StartGerrymanderingButton()
     {
-        
+        ASPLevelHandler.ClearMemory();
         loadScene("ASPSampleSceneGame");
     }
 

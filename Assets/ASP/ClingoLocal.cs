@@ -27,6 +27,10 @@ namespace Clingo
                 clingoThread.Start();
             }
         }
+        public override void Solve(string aspCode, string clingoArguments, bool saveFile)
+        {
+            base.Solve(aspCode, clingoArguments, true);
+        }
 
 
         //public override void Solve(string aspfilepath, string clingoArguments)

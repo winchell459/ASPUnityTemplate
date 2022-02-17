@@ -59,6 +59,12 @@ public class GolfASP : MonoBehaviour
         solver.Solve(aspCode, $"-c max_width={width} -c max_height={height} -c max_moves={max_moves} -c min_moves={min_moves} -c max_jump={max_jumps} -c min_jump={min_jumps} --parallel-mode {threads}", false);
 
     }
+    public void StartJob(ASPMemory<MoveEvents> memory, int minJump, int maxJump)
+    {
+        min_jumps = minJump;
+        max_jumps = maxJump;
+        StartJob(memory);
+    }
 
     string GetASPCode()
     {

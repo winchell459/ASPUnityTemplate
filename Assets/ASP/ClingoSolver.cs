@@ -71,7 +71,7 @@ namespace Clingo
             Solve();
         }
 
-        public  void Solve(string aspfilepath, string clingoArguments)
+        public void Solve(string aspfilepath, string clingoArguments)
         {
             this.AdditionalArguments = clingoArguments;
             this.aspFilePath = aspfilepath;

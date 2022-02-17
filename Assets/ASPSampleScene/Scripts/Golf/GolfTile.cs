@@ -6,6 +6,7 @@ public class GolfTile : MonoBehaviour
 {
     public int x, y;
     public Vector2Int pos { get { return new Vector2Int(x, y); } }
+    public 
     private void OnMouseDown()
     {
         FindObjectOfType<ASPLevelHandler>().GolfTileClicked(this);

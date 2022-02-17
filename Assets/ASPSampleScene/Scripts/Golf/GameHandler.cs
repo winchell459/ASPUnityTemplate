@@ -14,9 +14,10 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private List<int> movesList;
 
     static private int round = 0;
+    static public int Round { get { return round; } }
     private int turnCount = 0;
 
-    static float remainingTime = 60;
+    static float remainingTime = 15;
     [SerializeField] float remainingTimeStart = 60;
 
     [SerializeField] GameObject gameOverPanel;
@@ -35,6 +36,7 @@ public class GameHandler : MonoBehaviour
     {
         if(!gameOver && gamePlayMode && player.Stopped && moveFinder.GetEndLoc() == currentPos)
         {
+            remainingTime += 5;
             reloadScene();
             //gameOver = true;
         }else if(!gameOver && !gamePlayMode && FindObjectOfType<ASPLevelHandler>().Ready)

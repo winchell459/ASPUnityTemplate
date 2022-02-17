@@ -15,6 +15,8 @@ public class ASPLevelHandler : MonoBehaviour
 
     static ASPMemory<MoveEvents> memory;
     [SerializeField] private ASPMemory<MoveEvents> _memory;
+    public static void ClearMemory() { memory = null; }
+    public GameObject LoadingScreen;
     
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,7 @@ public class ASPLevelHandler : MonoBehaviour
             FindObjectOfType<Map.Map>().AdjustCamera();
             
             waitingForASP = false;
+            LoadingScreen.SetActive(false);
         }
     }
     
@@ -97,8 +100,24 @@ public class ASPLevelHandler : MonoBehaviour
     }
     private void startGolfASP()
     {
+        int round = GameHandler.Round;
+        int minJump = 1;
+        int maxJump = 3;
+        if(round >= 5 && round < 7)
+        {
+            minJump = 2;
+            maxJump = 4;
+        }else if(round < 12)
+        {
+            minJump = 3;
+            maxJump = 6;
+        }else if(round < 20)
+        {
+            minJump = 1;
+            maxJump = 9;
+        }
         waitingForASP = true;
-        golfASP.StartJob(memory);
+        golfASP.StartJob(memory, minJump, maxJump);
     }
 
     public void GolfTileClicked(GolfTile tile)
