@@ -17,11 +17,11 @@ public class ASPLevelHandler : MonoBehaviour
     [SerializeField] private ASPMemory<MoveEvents> _memory;
     public static void ClearMemory() { memory = null; }
     public GameObject LoadingScreen;
-    
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadingScreen.SetActive(true);
         if (memory == null)
         {
             //???should move to parent class or to within ASPMemory???
@@ -103,7 +103,10 @@ public class ASPLevelHandler : MonoBehaviour
         int round = GameHandler.Round;
         int minJump = 1;
         int maxJump = 3;
-        if(round >= 5 && round < 7)
+        if(round < 5){
+
+        }
+        else if(round < 7)
         {
             minJump = 2;
             maxJump = 4;
@@ -115,6 +118,11 @@ public class ASPLevelHandler : MonoBehaviour
         {
             minJump = 1;
             maxJump = 9;
+        }
+        else
+        {
+            maxJump = Random.Range(3, 10);
+            minJump = Random.Range(1, maxJump);
         }
         waitingForASP = true;
         golfASP.StartJob(memory, minJump, maxJump);

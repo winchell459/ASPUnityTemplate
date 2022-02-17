@@ -21,6 +21,7 @@ public class GameHandler : MonoBehaviour
     [SerializeField] float remainingTimeStart = 60;
 
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] UnityEngine.UI.Text[] highScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,12 @@ public class GameHandler : MonoBehaviour
     {
         if(!gameOver && gamePlayMode && player.Stopped && moveFinder.GetEndLoc() == currentPos)
         {
-            remainingTime += 5;
+            if (!undoMovePressed)
+            {
+                remainingTime += 15;
+            }
+            undoMovePressed = false;
+            
             reloadScene();
             //gameOver = true;
         }else if(!gameOver && !gamePlayMode && FindObjectOfType<ASPLevelHandler>().Ready)
@@ -55,6 +61,18 @@ public class GameHandler : MonoBehaviour
             if (remainingTime <= 0)
             {
                 gameOver = true;
+                int currentHighScore = PlayerPrefs.GetInt("highScore", 0);
+                if(round > currentHighScore)
+                {
+                    highScoreText[0].text = "New High Score: " + round.ToString();
+                    highScoreText[1].text = "New High Score: " + round.ToString();
+                    PlayerPrefs.SetInt("highScore", round);
+                }
+                else
+                {
+                    highScoreText[0].text = "High Score: " + currentHighScore.ToString();
+                    highScoreText[1].text = "High Score: " + currentHighScore.ToString();
+                }
                 gameOverPanel.SetActive(true);
             }
         }
@@ -158,6 +176,7 @@ public class GameHandler : MonoBehaviour
         FindObjectOfType<UIHandler>().Round = round;
     }
 
+    static bool undoMovePressed = false;
     public void UndoMoveButton()
     {
         if (gameOver) return;
@@ -191,6 +210,7 @@ public class GameHandler : MonoBehaviour
 
             turnCount -= 1;
             updateUIHandler();
+            undoMovePressed = true;
         }
         else if (!player.MovingForward && !player.Stopped)
         {
