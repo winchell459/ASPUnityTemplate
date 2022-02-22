@@ -2815,8 +2815,8 @@ BoxCollider2D:
   m_Offset: {x: -0.00037765503, y: -0.045289934}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.40332562, y: 0.4895443}
-    oldSize: {x: 0.92, y: 1.16}
+    pivot: {x: 0.46989426, y: 0.4895443}
+    oldSize: {x: 0.94, y: 1.16}
     newSize: {x: 0.46, y: 0.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7903,6 +7903,18 @@ PrefabInstance:
     - target: {fileID: 8705923846271873039, guid: e4ec5e467147f264b98a10a3e3c24e72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705923846271873136, guid: e4ec5e467147f264b98a10a3e3c24e72, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705923846271873136, guid: e4ec5e467147f264b98a10a3e3c24e72, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705923846271873136, guid: e4ec5e467147f264b98a10a3e3c24e72, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8705923846271873138, guid: e4ec5e467147f264b98a10a3e3c24e72, type: 3}
       propertyPath: m_Name
