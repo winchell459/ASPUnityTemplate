@@ -5,7 +5,8 @@ using UnityEngine;
 public class TabMovesUIHandler : MovesUIHandler
 {
     [SerializeField] private TabMove[] tabs;
-    
+    [SerializeField] private TabMove[] tabsLeft;
+
 
     protected override void displayMovesList()
     {
@@ -18,6 +19,7 @@ public class TabMovesUIHandler : MovesUIHandler
         for(int i = 0; i < tabs.Length; i += 1)
         {
             tabs[i].SetMoveCount(tabDisplay[i]);
+            tabsLeft[i].SetMoveCount(tabDisplay[i]);
         }
     }
 }

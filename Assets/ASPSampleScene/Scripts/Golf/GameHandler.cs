@@ -56,7 +56,8 @@ public class GameHandler : MonoBehaviour
             updateUIHandler();
         }else if(!gameOver && gamePlayMode)
         {
-            remainingTime -= Time.deltaTime;
+            if(player.Stopped)
+                remainingTime -= Time.deltaTime;
             FindObjectOfType<UIHandler>().TimeRemainig = remainingTime;
             if (remainingTime <= 0)
             {

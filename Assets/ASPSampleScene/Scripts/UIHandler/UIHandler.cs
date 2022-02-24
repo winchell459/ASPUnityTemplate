@@ -32,5 +32,33 @@ public class UIHandler : MonoBehaviour
         FindObjectOfType<RoundUIHandler>().TimeRemaining = timeRemaining;
     }
 
+    [SerializeField] GameObject[] leftHandedUI, rightHandedUI;
+    bool isRightHanded;
+    public void ToggelUIButton()
+    {
+        isRightHanded = !isRightHanded;
+        PlayerPrefs.SetString("UIHanded", isRightHanded.ToString());
+        setHandedUI();
+    }
+
+    private void setHandedUI()
+    {
+        foreach (GameObject gameObject in leftHandedUI)
+        {
+            gameObject.SetActive(!isRightHanded);
+        }
+
+        foreach (GameObject gameObject in rightHandedUI)
+        {
+            gameObject.SetActive(isRightHanded);
+        }
+    }
+
+    private void Start()
+    {
+        Debug.Log(PlayerPrefs.GetString("UIHanded", "True"));
+        isRightHanded = PlayerPrefs.GetString("UIHanded", "True") == "True";
+        setHandedUI();
+    }
 
 }
