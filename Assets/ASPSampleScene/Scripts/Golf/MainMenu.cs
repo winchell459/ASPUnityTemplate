@@ -5,7 +5,8 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     bool howToPlaying = false;
-    public GameObject HowToPlayPanel;
+    public GameObject HowToPlayPanel, howToPlayButton;
+    
     
     public void StartGerrymanderingButton()
     {
@@ -21,6 +22,8 @@ public class MainMenu : MonoBehaviour
     public void HowToPlayButton()
     {
         HowToPlayPanel.SetActive(true);
+        howToPlayButton.SetActive(false);
+        HowToPlayPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.height * 4 / 3, Screen.height);
         howToPlaying = true;
     }
 
@@ -30,6 +33,7 @@ public class MainMenu : MonoBehaviour
         {
             HowToPlayPanel.SetActive(false);
             howToPlaying = false;
+            howToPlayButton.SetActive(true);
         }
     }
 }
